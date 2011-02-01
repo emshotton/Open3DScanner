@@ -1,15 +1,18 @@
-
+//This work is under a creative commons Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0) License
+//for more details see: http://creativecommons.org/licenses/by-nc-sa/3.0/
+//By matt shotton
+//matthewshotton.wordpress.com
 
 
 module arms(){
 	rotate(90,[0,1,0])
 	rotate(-90,[1,0,0])
-	translate([-97,-60,118])
+	translate([-97,-129,118])
 	dxf_linear_extrude(file = "parts.dxf", layer = "arm" ,height = 6, center = true, convexity = 20);
 
 	rotate(90,[0,1,0])
 	rotate(-90,[1,0,0])
-	translate([-97,-60,-118])
+	translate([-97,-129,-118])
 	dxf_linear_extrude(file = "parts.dxf", layer = "arm" ,height = 6, center = true, convexity = 20);
 
 	translate([60,-125,97])
@@ -31,7 +34,14 @@ module cam_mount()
 		dxf_linear_extrude(file = "parts.dxf", layer = "cam_clamp" ,height = 6, center = true, convexity = 20);
 		translate([0,0,6])
 		dxf_linear_extrude(file = "parts.dxf", layer = "cam_front" ,height = 6, center = true, convexity = 20);
+		translate([0,0,72])
+		dxf_linear_extrude(file = "parts.dxf", layer = "cam_back" ,height = 6, center = true, convexity = 20);
 	}
+	rotate(90,[0,0,1]){
+	translate([0,-243,138])
+	dxf_linear_extrude(file = "parts.dxf", layer = "cam_top" ,height = 6, center = true, convexity = 20);
+	translate([0,-243,66])
+	dxf_linear_extrude(file = "parts.dxf", layer = "cam_top" ,height = 6, center = true, convexity = 20);}
 	
 }
 
@@ -147,11 +157,11 @@ module case(){
 //$fa = 1;
 //$fs = 0.01;
 bearing_holders();
-case();
+%case();
 platform();
 laserholder();
 arms();
-bed();
+%bed();
 cam_mount();
 
 
