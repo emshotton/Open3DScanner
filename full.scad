@@ -3,48 +3,6 @@
 //By matt shotton
 //matthewshotton.wordpress.com
 
-
-module arms(){
-	rotate(90,[0,1,0])
-	rotate(-90,[1,0,0])
-	translate([-97,-129,118])
-	dxf_linear_extrude(file = "parts.dxf", layer = "arm" ,height = 6, center = true, convexity = 20);
-
-	rotate(90,[0,1,0])
-	rotate(-90,[1,0,0])
-	translate([-97,-129,-118])
-	dxf_linear_extrude(file = "parts.dxf", layer = "arm" ,height = 6, center = true, convexity = 20);
-
-	translate([60,-125,97])
-	rotate(90,[0,1,0])
-	//rotate(-90,[1,0,0])
-	dxf_linear_extrude(file = "parts.dxf", layer = "armsupport" ,height = 6, center = true, convexity = 20);
-
-	translate([60,125,97])
-	rotate(90,[0,1,0])
-	rotate(-180,[1,0,0])
-	dxf_linear_extrude(file = "parts.dxf", layer = "armsupport" ,height = 6, center = true, convexity = 20);
-}
-
-module cam_mount()
-{
-	rotate(90,[1,0,0])
-	translate([204,-103,125])
-	rotate(90,[0,1,0]){
-		dxf_linear_extrude(file = "parts.dxf", layer = "cam_clamp" ,height = 6, center = true, convexity = 20);
-		translate([0,0,6])
-		dxf_linear_extrude(file = "parts.dxf", layer = "cam_front" ,height = 6, center = true, convexity = 20);
-		translate([0,0,72])
-		dxf_linear_extrude(file = "parts.dxf", layer = "cam_back" ,height = 6, center = true, convexity = 20);
-	}
-	rotate(90,[0,0,1]){
-	translate([0,-243,138])
-	dxf_linear_extrude(file = "parts.dxf", layer = "cam_top" ,height = 6, center = true, convexity = 20);
-	translate([0,-243,66])
-	dxf_linear_extrude(file = "parts.dxf", layer = "cam_top" ,height = 6, center = true, convexity = 20);}
-	
-}
-
 module bed(){
 	dxf_linear_extrude(file = "parts.dxf", layer = "bed" ,height = 6, center = true, convexity = 10);
 }
@@ -127,59 +85,11 @@ module laserholder(){
 	}
 }
 
-module case(){
-	rotate(90,[1,0,0]){
-		translate([-125,-103,0]){
-			translate([0,0,-128])
-			dxf_linear_extrude(file = "parts.dxf", layer = "side" ,height = 6, center = true, convexity = 20);
-			translate([0,0,128])
-			dxf_linear_extrude(file = "parts.dxf", layer = "side" ,height = 6, center = true, convexity = 20);
-			translate([253,0,125])
-			rotate(90,[0,1,0])
-			dxf_linear_extrude(file = "parts.dxf", layer = "front" ,height = 6, center = true, convexity = 20);
-			translate([259,0,125])
-			rotate(90,[0,1,0])
-			dxf_linear_extrude(file = "parts.dxf", layer = "frontclamp" ,height = 6, center = true, convexity = 20);
-			translate([-3,0,125])
-			rotate(90,[0,1,0])
-			dxf_linear_extrude(file = "parts.dxf", layer = "back" ,height = 6, center = true, convexity = 20);
-			
-
-		}
-	}
-	translate([0,0,200])
-	dxf_linear_extrude(file = "parts.dxf", layer = "top" ,height = 6, center = true, convexity = 20);
-	translate([0,0,-106])
-	dxf_linear_extrude(file = "parts.dxf", layer = "top" ,height = 6, center = true, convexity = 20);
-}
 
 /*******************Drawing the scanner********************/
 //$fa = 1;
 //$fs = 0.01;
 bearing_holders();
-%case();
 platform();
 laserholder();
-arms();
 %bed();
-cam_mount();
-
-
-/*translate([60,113,98])
-rotate(90,[0,1,0])
-rotate(-90,[1,0,0])
-dxf_linear_extrude(file = "parts.dxf", layer = "arm" ,height = 6, center = true, convexity = 20);
-translate([60,-113,98])
-rotate(90,[0,1,0])
-rotate(-90,[1,0,0])
-dxf_linear_extrude(file = "parts.dxf", layer = "arm" ,height = 6, center = true, convexity = 20);
-
-translate([0,-125,98])
-rotate(90,[0,1,0])
-//rotate(-90,[1,0,0])
-dxf_linear_extrude(file = "parts.dxf", layer = "armsupport" ,height = 6, center = true, convexity = 20);
-
-translate([0,125,98])
-rotate(90,[0,1,0])
-rotate(-180,[1,0,0])
-dxf_linear_extrude(file = "parts.dxf", layer = "armsupport" ,height = 6, center = true, convexity = 20);*/
