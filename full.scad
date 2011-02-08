@@ -3,6 +3,22 @@
 //By matt shotton
 //matthewshotton.wordpress.com
 
+module laserholder(){
+	translate([115,115,3])	
+	rotate(90,[1,0,0])
+	rotate(45,[0,1,0])
+	{
+		dxf_linear_extrude(file = "parts.dxf", layer = "laserholder1" ,height = 6, center = true, convexity = 10);
+		rotate(90,[0,1,0])
+		translate([0,0,-33])
+		dxf_linear_extrude(file = "parts.dxf", layer = "laserholder2" ,height = 6, center = true, convexity = 10);
+		rotate(90,[1,0,0])
+		rotate(90,[0,0,1])
+		translate([0,10,-63])
+		dxf_linear_extrude(file = "parts.dxf", layer = "laserholder3" ,height = 6, center = true, convexity = 10);
+	}
+}
+
 module bed(){
 	dxf_linear_extrude(file = "parts.dxf", layer = "bed" ,height = 6, center = true, convexity = 10);
 }
@@ -69,21 +85,7 @@ module platform(){
 }
 
 
-module laserholder(){
-	translate([110,110,3])	
-	rotate(90,[1,0,0])
-	rotate(45,[0,1,0])
-	{
-		dxf_linear_extrude(file = "parts.dxf", layer = "laserholder1" ,height = 6, center = true, convexity = 10);
-		rotate(90,[0,1,0])
-		translate([0,0,-33])
-		dxf_linear_extrude(file = "parts.dxf", layer = "laserholder2" ,height = 6, center = true, convexity = 10);
-		rotate(90,[1,0,0])
-		rotate(90,[0,0,1])
-		translate([0,10,-63])
-		dxf_linear_extrude(file = "parts.dxf", layer = "laserholder3" ,height = 6, center = true, convexity = 10);
-	}
-}
+
 
 
 /*******************Drawing the scanner********************/
