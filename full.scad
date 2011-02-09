@@ -157,12 +157,12 @@ module case(){
 //$fa = 1;
 //$fs = 0.01;
 bearing_holders();
-%case();
+//case();
 platform();
 laserholder();
-arms();
-%bed();
-cam_mount();
+//arms();
+bed();
+//cam_mount();
 
 
 /*translate([60,113,98])
