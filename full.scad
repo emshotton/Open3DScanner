@@ -84,7 +84,25 @@ module platform(){
 	dxf_linear_extrude(file = "misc.dxf", layer = "nut" ,height = 5, center = true, convexity = 10,scale = 10);
 }
 
+module case(){
+	rotate(90,[1,0,0])
+	translate([0,0,133])
+	dxf_linear_extrude(file = "parts.dxf", layer = "front" ,height = 6, center = true, convexity = 10);
+	rotate(90,[1,0,0])
+	translate([0,0,-133])
+	dxf_linear_extrude(file = "parts.dxf", layer = "back" ,height = 6, center = true, convexity = 10);
+	translate([0,0,206])
+	dxf_linear_extrude(file = "parts.dxf", layer = "top" ,height = 6, center = true, convexity = 10);
 
+	rotate(90,[0,0,1])
+	rotate(90,[1,0,0])
+	translate([0,0,-133])
+	dxf_linear_extrude(file = "parts.dxf", layer = "side" ,height = 6, center = true, convexity = 10);
+	rotate(90,[0,0,1])
+	rotate(90,[1,0,0])
+	translate([0,0,293])
+	dxf_linear_extrude(file = "parts.dxf", layer = "side" ,height = 6, center = true, convexity = 10);
+}
 
 
 
@@ -95,3 +113,4 @@ bearing_holders();
 platform();
 laserholder();
 %bed();
+case();
