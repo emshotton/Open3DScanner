@@ -3,6 +3,20 @@
 //By matt shotton
 //matthewshotton.wordpress.com
 
+module door(){
+
+	rotate(90,[1,0,0])
+	translate([0,0,127])
+	dxf_linear_extrude(file = "parts.dxf", layer = "latch" ,height = 6, center = true, convexity = 10);
+	rotate(90,[1,0,0])
+	translate([0,0,139])
+	dxf_linear_extrude(file = "parts.dxf", layer = "door" ,height = 6, center = true, convexity = 10);
+	rotate(90,[1,0,0])
+	translate([0,0,151])
+	dxf_linear_extrude(file = "parts.dxf", layer = "handle" ,height = 6, center = true, convexity = 10);
+
+}
+
 module cam_mount(){
 	rotate(90,[1,0,0])
 	translate([239,0,97])
@@ -115,6 +129,8 @@ module case(){
 	dxf_linear_extrude(file = "parts.dxf", layer = "back" ,height = 6, center = true, convexity = 10);
 	translate([0,0,206])
 	dxf_linear_extrude(file = "parts.dxf", layer = "top" ,height = 6, center = true, convexity = 10);
+	translate([0,0,212])
+	dxf_linear_extrude(file = "parts.dxf", layer = "hatch" ,height = 6, center = true, convexity = 10);
 
 	rotate(90,[0,0,1])
 	rotate(90,[1,0,0])
@@ -135,5 +151,6 @@ bearing_holders();
 platform();
 laserholder();
 %bed();
-case();
+%case();
 cam_mount();
+door();
