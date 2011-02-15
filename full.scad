@@ -151,6 +151,6 @@ bearing_holders();
 platform();
 laserholder();
 %bed();
-%case();
+//%case();
 cam_mount();
 door();
