@@ -3,6 +3,21 @@
 //By matt shotton
 //matthewshotton.wordpress.com
 
+	rotate(90,[0,0,0])
+	translate([0,-217,48])
+	dxf_linear_extrude(file = "parts.dxf", layer = "front_bracket" ,height = 6, center = true, convexity = 10);
+	rotate(90,[0,0,0])
+	translate([0,-217,60])
+	dxf_linear_extrude(file = "parts.dxf", layer = "front_bracket" ,height = 6, center = true, convexity = 10);
+	rotate(90,[0,0,0])
+	translate([0,-217,146])
+	dxf_linear_extrude(file = "parts.dxf", layer = "front_bracket" ,height = 6, center = true, convexity = 10);
+	rotate(90,[0,0,0])
+	translate([0,-217,158])
+	dxf_linear_extrude(file = "parts.dxf", layer = "front_bracket" ,height = 6, center = true, convexity = 10);
+
+
+
 module door(){
 
 	rotate(90,[1,0,0])
@@ -14,6 +29,17 @@ module door(){
 	rotate(90,[1,0,0])
 	translate([0,0,151])
 	dxf_linear_extrude(file = "parts.dxf", layer = "handle" ,height = 6, center = true, convexity = 10);
+
+	rotate(90,[0,0,0])
+	translate([0,-217,152])
+	dxf_linear_extrude(file = "parts.dxf", layer = "door_bracket" ,height = 6, center = true, convexity = 10);
+
+	rotate(90,[0,0,0])
+	translate([0,-217,54])
+	dxf_linear_extrude(file = "parts.dxf", layer = "door_bracket" ,height = 6, center = true, convexity = 10);
+
+
+
 
 }
 
@@ -149,6 +175,8 @@ module case(){
 	rotate(90,[1,0,0])
 	translate([0,0,293])
 	dxf_linear_extrude(file = "parts.dxf", layer = "side" ,height = 6, center = true, convexity = 10);
+
+
 }
 
 
@@ -160,6 +188,6 @@ bearing_holders();
 platform();
 laserholder();
 %bed();
-//%case();
+case();
 cam_mount();
 door();
