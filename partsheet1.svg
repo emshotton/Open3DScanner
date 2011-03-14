@@ -12,7 +12,7 @@
    inkscape:version="0.48.0 r9654"
    width="3238.5825"
    height="2157.874"
-   sodipodi:docname="partsheet1.svg"
+   sodipodi:docname="partsheet1_old.svg"
    style="display:inline">
   <metadata
      id="metadata8846">
@@ -22,7 +22,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -40,12 +40,12 @@
      id="namedview8844"
      showgrid="false"
      inkscape:zoom="0.17268432"
-     inkscape:cx="1548.2196"
+     inkscape:cx="1430.1208"
      inkscape:cy="1076.6899"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g3726"
+     inkscape:current-layer="layer1"
      units="mm" />
   <desc
      id="desc3006">/home/matt/Documents/Open3DScanner/parts.dxf - scale = 1.000000</desc>
@@ -71,15 +71,15 @@
        id="*Paper_Space0" />
   </defs>
   <g
-     inkscape:label="bed"
      inkscape:groupmode="layer"
-     id="g3124"
+     id="layer1"
+     inkscape:label="all"
      style="display:inline"
-     transform="translate(0,1105.5117)"
      sodipodi:insensitive="true">
     <g
+       style="display:inline"
        id="g8867"
-       transform="translate(569.20568,-532.84931)">
+       transform="translate(552.15659,555.76009)">
       <path
          inkscape:connector-curvature="0"
          id="path3126"
@@ -1421,17 +1421,10 @@
          d="m 811.41732,719.29134 70.86614,0"
          style="fill:none;stroke:#000000" />
     </g>
-  </g>
-  <g
-     inkscape:label="bearing_h"
-     inkscape:groupmode="layer"
-     id="g3662"
-     style="display:inline"
-     transform="translate(0,1105.5117)"
-     sodipodi:insensitive="true">
     <g
+       style="display:inline"
        id="g10803"
-       transform="matrix(0,1,-1,0,3077.926,819.08613)">
+       transform="matrix(0,1,-1,0,3060.8769,1907.6955)">
       <path
          inkscape:connector-curvature="0"
          id="path3664"
@@ -1501,7 +1494,7 @@
     <g
        style="display:inline"
        id="g10803-7"
-       transform="matrix(0,1,-1,0,3307.9232,819.08628)">
+       transform="matrix(0,1,-1,0,3290.8741,1907.6957)">
       <path
          inkscape:connector-curvature="0"
          id="path3664-7"
@@ -1571,7 +1564,7 @@
     <g
        style="display:inline"
        id="g10803-1"
-       transform="matrix(0,1,-1,0,3533.7688,819.08628)">
+       transform="matrix(0,1,-1,0,3516.7197,1907.6957)">
       <path
          inkscape:connector-curvature="0"
          id="path3664-76"
@@ -1641,7 +1634,7 @@
     <g
        style="display:inline"
        id="g10803-6"
-       transform="matrix(0,1,-1,0,3756.7189,819.08628)">
+       transform="matrix(0,1,-1,0,3739.6698,1907.6957)">
       <path
          inkscape:connector-curvature="0"
          id="path3664-4"
@@ -1711,7 +1704,7 @@
     <g
        style="display:inline"
        id="g10803-70"
-       transform="matrix(0,1,-1,0,3076.2866,920.42726)">
+       transform="matrix(0,1,-1,0,3059.2375,2009.0367)">
       <path
          inkscape:connector-curvature="0"
          id="path3664-0"
@@ -1781,7 +1774,7 @@
     <g
        style="display:inline"
        id="g10803-5"
-       transform="matrix(0,1,-1,0,3307.9231,923.32269)">
+       transform="matrix(0,1,-1,0,3290.874,2011.9321)">
       <path
          inkscape:connector-curvature="0"
          id="path3664-73"
@@ -1848,17 +1841,10 @@
          d="m 0,1158.6614 60.23622,0"
          style="fill:none;stroke:#000000" />
     </g>
-  </g>
-  <g
-     inkscape:label="platform2"
-     inkscape:groupmode="layer"
-     id="g3726"
-     style="display:inline"
-     transform="translate(0,1105.5117)"
-     sodipodi:insensitive="true">
     <g
+       style="display:inline"
        id="g11206"
-       transform="translate(2256.2318,-1185.443)">
+       transform="translate(2239.1827,-96.833596)">
       <path
          inkscape:connector-curvature="0"
          id="path3728"
@@ -1890,17 +1876,10 @@
          d="m 106.29921,1052.3622 a 106.29921,106.29921 0 1 0 -212.59842,0 106.29921,106.29921 0 1 0 212.59842,0 z"
          style="fill:none;stroke:#000000" />
     </g>
-  </g>
-  <g
-     inkscape:label="laserholder1"
-     inkscape:groupmode="layer"
-     id="g3740"
-     style="display:inline"
-     transform="translate(0,1105.5117)"
-     sodipodi:insensitive="true">
     <g
+       style="display:inline"
        id="g11173"
-       transform="matrix(0,1,-1,0,2961.5654,-90.774891)">
+       transform="matrix(0,1,-1,0,2944.5163,997.8345)">
       <path
          inkscape:connector-curvature="0"
          id="path3742"
@@ -2057,17 +2036,10 @@
          d="m -124.01575,1052.3622 45.354333,0"
          style="fill:none;stroke:#000000" />
     </g>
-  </g>
-  <g
-     inkscape:label="laserholder2"
-     inkscape:groupmode="layer"
-     id="g3846"
-     style="display:inline"
-     transform="translate(0,1105.5117)"
-     sodipodi:insensitive="true">
     <g
+       style="display:inline"
        id="g11159"
-       transform="translate(2093.4154,-390.88668)">
+       transform="translate(2076.3663,697.72272)">
       <path
          inkscape:connector-curvature="0"
          id="path3848"
@@ -2129,17 +2101,10 @@
          d="m -70.740597,1040.1034 a 10.629921,10.629921 0 0 0 10.504377,12.2588"
          style="fill:none;stroke:#000000" />
     </g>
-  </g>
-  <g
-     inkscape:label="laserholder3"
-     inkscape:groupmode="layer"
-     id="g3894"
-     style="display:inline"
-     transform="translate(0,1105.5117)"
-     sodipodi:insensitive="true">
     <g
+       style="display:inline"
        id="g11141"
-       transform="matrix(0,1,-1,0,2902.5592,293.75248)">
+       transform="matrix(0,1,-1,0,2885.5101,1382.3619)">
       <path
          inkscape:connector-curvature="0"
          id="path3896"
@@ -2221,17 +2186,10 @@
          d="m 31.889764,1123.2283 a 3.543307,3.543307 0 0 0 3.543307,-3.5433"
          style="fill:none;stroke:#000000" />
     </g>
-  </g>
-  <g
-     inkscape:label="bedbearing_h"
-     inkscape:groupmode="layer"
-     id="g3928"
-     style="display:inline"
-     transform="translate(0,1105.5117)"
-     sodipodi:insensitive="true">
     <g
+       style="display:inline"
        id="g9678"
-       transform="translate(1996.2123,-841.48028)">
+       transform="translate(1979.1632,247.12913)">
       <path
          inkscape:connector-curvature="0"
          id="path3930"
@@ -2298,17 +2256,10 @@
          d="m 70.866142,1087.7953 a 35.433071,35.433071 0 0 0 -35.433071,35.433"
          style="fill:none;stroke:#000000" />
     </g>
-  </g>
-  <g
-     inkscape:label="gear1"
-     inkscape:groupmode="layer"
-     id="g3956"
-     style="display:inline"
-     transform="translate(0,1105.5117)"
-     sodipodi:insensitive="true">
     <g
+       style="display:inline"
        id="g9693"
-       transform="translate(1885.6529,-528.22846)">
+       transform="translate(1868.6038,560.38094)">
       <path
          inkscape:connector-curvature="0"
          id="path3958"
@@ -6235,17 +6186,10 @@
          d="m -63.779528,1052.3622 a 7.086614,7.086614 0 1 0 -14.173228,0 7.086614,7.086614 0 1 0 14.173228,0 z"
          style="fill:none;stroke:#000000" />
     </g>
-  </g>
-  <g
-     inkscape:label="gear2"
-     inkscape:groupmode="layer"
-     id="g5528"
-     style="display:inline"
-     transform="translate(0,1105.5117)"
-     sodipodi:insensitive="true">
     <g
+       style="display:inline"
        id="g10480"
-       transform="translate(1834.4679,-890.6178)">
+       transform="translate(1817.4188,197.99161)">
       <path
          inkscape:connector-curvature="0"
          id="path5530"
@@ -7852,17 +7796,10 @@
          d="m 7.086614,1052.3622 a 7.086614,7.086614 0 1 0 -14.173228,0 7.086614,7.086614 0 1 0 14.173228,0 z"
          style="fill:none;stroke:#000000" />
     </g>
-  </g>
-  <g
-     inkscape:label="front"
-     inkscape:groupmode="layer"
-     id="g6172"
-     style="display:inline"
-     transform="translate(0,1105.5117)"
-     sodipodi:insensitive="true">
     <g
+       style="display:inline"
        id="g9137"
-       transform="translate(2116.579,-303.11465)">
+       transform="translate(2099.5299,785.49475)">
       <path
          inkscape:connector-curvature="0"
          id="path6174"
@@ -9269,17 +9206,10 @@
          d="m 496.06299,545.66929 70.86614,0"
          style="fill:none;stroke:#000000" />
     </g>
-  </g>
-  <g
-     inkscape:label="back"
-     inkscape:groupmode="layer"
-     id="g6736"
-     style="display:inline"
-     transform="translate(0,1105.5117)"
-     sodipodi:insensitive="true">
     <g
+       style="display:inline"
        id="g9420"
-       transform="translate(2129.2932,-1330.8082)">
+       transform="translate(2112.2441,-242.1988)">
       <path
          inkscape:connector-curvature="0"
          id="path6738"
@@ -10561,17 +10491,10 @@
          d="m 1027.5591,1296.8504 -85.03942,0"
          style="fill:none;stroke:#000000" />
     </g>
-  </g>
-  <g
-     inkscape:label="cam_strut"
-     inkscape:groupmode="layer"
-     id="g8110"
-     style="display:inline"
-     transform="translate(0,1105.5117)"
-     sodipodi:insensitive="true">
     <g
+       style="display:inline"
        id="g11336"
-       transform="matrix(0,-1,1,0,-138.21665,-154.2245)">
+       transform="matrix(0,-1,1,0,-155.26574,934.3849)">
       <path
          inkscape:connector-curvature="0"
          id="path8112"
@@ -10896,7 +10819,7 @@
     <g
        style="display:inline"
        id="g11336-4"
-       transform="matrix(0,-1,1,0,-138.21665,-488.02077)">
+       transform="matrix(0,-1,1,0,-155.26574,600.58863)">
       <path
          inkscape:connector-curvature="0"
          id="path8112-8"
@@ -11218,17 +11141,10 @@
          d="m 159.44882,333.07087 0,-21.25985"
          style="fill:none;stroke:#000000" />
     </g>
-  </g>
-  <g
-     inkscape:label="cam_base"
-     inkscape:groupmode="layer"
-     id="g8240"
-     style="display:inline"
-     transform="translate(0,1105.5117)"
-     sodipodi:insensitive="true">
     <g
+       style="display:inline"
        id="g11292"
-       transform="matrix(0,1,-1,0,2350.9039,-1679.4306)">
+       transform="matrix(0,1,-1,0,2333.8548,-590.8212)">
       <path
          inkscape:connector-curvature="0"
          id="path8242"
@@ -11440,17 +11356,10 @@
          d="m 811.41732,1353.5433 70.86614,0"
          style="fill:none;stroke:#000000" />
     </g>
-  </g>
-  <g
-     inkscape:label="cam_front"
-     inkscape:groupmode="layer"
-     id="g8326"
-     style="display:inline"
-     transform="translate(0,1105.5117)"
-     sodipodi:insensitive="true">
     <g
+       style="display:inline"
        id="g11612"
-       transform="matrix(0,1,-1,0,1605.3945,-841.26664)">
+       transform="matrix(0,1,-1,0,1588.3454,247.34277)">
       <path
          inkscape:connector-curvature="0"
          id="path8328"
@@ -11702,17 +11611,10 @@
          d="m -116.92913,921.25984 a 7.086615,7.086615 0 1 0 -14.17323,0 7.086615,7.086615 0 1 0 14.17323,0 z"
          style="fill:none;stroke:#000000" />
     </g>
-  </g>
-  <g
-     inkscape:label="cam_back"
-     inkscape:groupmode="layer"
-     id="g8428"
-     style="display:inline"
-     transform="translate(0,1105.5117)"
-     sodipodi:insensitive="true">
     <g
+       style="display:inline"
        id="g11258"
-       transform="matrix(0,1,-1,0,2355.3178,-488.0209)">
+       transform="matrix(0,1,-1,0,2338.2687,600.5885)">
       <path
          inkscape:connector-curvature="0"
          id="path8430"
@@ -11874,17 +11776,10 @@
          d="m 81.496063,1321.6535 a 21.259843,21.259843 0 0 0 21.259847,-21.2598"
          style="fill:none;stroke:#000000" />
     </g>
-  </g>
-  <g
-     inkscape:label="cam_top"
-     inkscape:groupmode="layer"
-     id="g8494"
-     style="display:inline"
-     transform="translate(0,1105.5117)"
-     sodipodi:insensitive="true">
     <g
+       style="display:inline"
        id="g11214"
-       transform="matrix(0,1,-1,0,2350.9039,-993.20734)">
+       transform="matrix(0,1,-1,0,2333.8548,95.402064)">
       <path
          inkscape:connector-curvature="0"
          id="path8496"
@@ -12096,17 +11991,10 @@
          d="m 811.41732,1353.5433 70.86614,0"
          style="fill:none;stroke:#000000" />
     </g>
-  </g>
-  <g
-     inkscape:label="latch"
-     inkscape:groupmode="layer"
-     id="g8642"
-     style="display:inline"
-     transform="translate(0,1105.5117)"
-     sodipodi:insensitive="true">
     <g
+       style="display:inline"
        id="g11007"
-       transform="translate(2825.966,260.59113)">
+       transform="translate(2808.9169,1349.2005)">
       <path
          inkscape:connector-curvature="0"
          id="path8644"
@@ -12148,17 +12036,10 @@
          d="m -420.56329,666.28373 a 21.259843,21.259843 0 0 0 -5.39162,40.87745"
          style="fill:none;stroke:#000000" />
     </g>
-  </g>
-  <g
-     inkscape:label="cam_side"
-     inkscape:groupmode="layer"
-     id="g8714"
-     style="display:inline"
-     transform="translate(0,1105.5117)"
-     sodipodi:insensitive="true">
     <g
+       style="display:inline"
        id="g11017"
-       transform="matrix(0,1,-1,0,3344.9318,-607.72228)">
+       transform="matrix(0,1,-1,0,3327.8827,480.88712)">
       <path
          inkscape:connector-curvature="0"
          id="path8716"
@@ -12293,7 +12174,7 @@
     <g
        style="display:inline"
        id="g11017-3"
-       transform="matrix(0,1,-1,0,3343.5583,-322.71656)">
+       transform="matrix(0,1,-1,0,3326.5092,765.89284)">
       <path
          inkscape:connector-curvature="0"
          id="path8716-7"
@@ -12425,17 +12306,10 @@
          d="m 985.03937,967.32284 0,194.88186"
          style="fill:none;stroke:#000000" />
     </g>
-  </g>
-  <g
-     inkscape:label="door_bracket"
-     inkscape:groupmode="layer"
-     id="g8768"
-     style="display:inline"
-     transform="translate(0,1105.5117)"
-     sodipodi:insensitive="true">
     <g
+       style="display:inline"
        id="g11664"
-       transform="translate(20.268199,-961.29171)">
+       transform="translate(3.2191102,127.31769)">
       <path
          inkscape:connector-curvature="0"
          id="path8770"
@@ -12495,7 +12369,7 @@
     <g
        style="display:inline"
        id="g11664-2"
-       transform="translate(277.01106,-962.91724)">
+       transform="translate(259.96197,125.69216)">
       <path
          inkscape:connector-curvature="0"
          id="path8770-5"
@@ -12552,17 +12426,10 @@
          d="m 333.07087,768.89764 a 3.543307,3.543307 0 0 0 -3.54331,-3.54331"
          style="fill:none;stroke:#000000" />
     </g>
-  </g>
-  <g
-     inkscape:label="front_bracket"
-     inkscape:groupmode="layer"
-     id="g8792"
-     style="display:inline"
-     transform="translate(0,1105.5117)"
-     sodipodi:insensitive="true">
     <g
+       style="display:inline"
        id="g11728"
-       transform="translate(2277.317,-984.46999)">
+       transform="translate(2260.2679,104.13941)">
       <path
          inkscape:connector-curvature="0"
          id="path8794"
@@ -12622,7 +12489,7 @@
     <g
        style="display:inline"
        id="g11728-1"
-       transform="translate(1961.7549,-977.6585)">
+       transform="translate(1944.7058,110.9509)">
       <path
          inkscape:connector-curvature="0"
          id="path8794-0"
@@ -12682,7 +12549,7 @@
     <g
        style="display:inline"
        id="g11728-7"
-       transform="translate(2123.9005,-982.95269)">
+       transform="translate(2106.8514,105.65671)">
       <path
          inkscape:connector-curvature="0"
          id="path8794-3"
@@ -12742,7 +12609,7 @@
     <g
        style="display:inline"
        id="g11728-70"
-       transform="translate(2364.5765,-889.45425)">
+       transform="translate(2347.5274,199.15516)">
       <path
          inkscape:connector-curvature="0"
          id="path8794-1"
