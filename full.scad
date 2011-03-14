@@ -3,7 +3,42 @@
 //By matt shotton
 //matthewshotton.wordpress.com
 
+module cam_mount(){
 
+	rotate(90,[1,0,0])
+	translate([239,0,-97])
+	dxf_linear_extrude(file = "parts.dxf", layer = "cam_strut" ,height = 6, center = true, convexity = 10);
+	rotate(90,[1,0,0])
+	translate([239,0,97])
+	dxf_linear_extrude(file = "parts.dxf", layer = "cam_strut" ,height = 6, center = true, convexity = 10);
+
+
+	rotate(90,[0,1,0])
+	translate([-100,0,197])
+	dxf_linear_extrude(file = "parts.dxf", layer = "cam_front" ,height = 6, center = true, convexity = 10);
+
+	rotate(90,[0,1,0])
+	translate([-100,0,191])
+	dxf_linear_extrude(file = "parts.dxf", layer = "ps3eye_camplate" ,height = 6, center = true, convexity = 10);
+
+
+	rotate(90,[0,1,0])
+	translate([-100,0,281])
+	dxf_linear_extrude(file = "parts.dxf", layer = "cam_back" ,height = 6, center = true, convexity = 10);
+
+	translate([0,0,62])
+	dxf_linear_extrude(file = "parts.dxf", layer = "cam_base" ,height = 6, center = true, convexity = 10);
+	translate([0,0,138])
+	dxf_linear_extrude(file = "parts.dxf", layer = "cam_top" ,height = 6, center = true, convexity = 10);
+
+	rotate(90,[1,0,0])
+	translate([0,96,88])
+	dxf_linear_extrude(file = "parts.dxf", layer = "cam_side" ,height = 6, center = true, convexity = 10);
+	rotate(90,[1,0,0])
+	translate([0,96,-88])
+	dxf_linear_extrude(file = "parts.dxf", layer = "cam_side" ,height = 6, center = true, convexity = 10);
+
+}
 
 
 
@@ -43,36 +78,7 @@ module door(){
 
 }
 
-module cam_mount(){
 
-	rotate(90,[1,0,0])
-	translate([239,0,-97])
-	dxf_linear_extrude(file = "parts.dxf", layer = "cam_strut" ,height = 6, center = true, convexity = 10);
-	rotate(90,[1,0,0])
-	translate([239,0,97])
-	dxf_linear_extrude(file = "parts.dxf", layer = "cam_strut" ,height = 6, center = true, convexity = 10);
-
-
-	rotate(90,[0,1,0])
-	translate([-100,0,197])
-	dxf_linear_extrude(file = "parts.dxf", layer = "cam_front" ,height = 6, center = true, convexity = 10);
-	rotate(90,[0,1,0])
-	translate([-100,0,281])
-	dxf_linear_extrude(file = "parts.dxf", layer = "cam_back" ,height = 6, center = true, convexity = 10);
-
-	translate([0,0,62])
-	dxf_linear_extrude(file = "parts.dxf", layer = "cam_base" ,height = 6, center = true, convexity = 10);
-	translate([0,0,138])
-	dxf_linear_extrude(file = "parts.dxf", layer = "cam_top" ,height = 6, center = true, convexity = 10);
-
-	rotate(90,[1,0,0])
-	translate([0,96,88])
-	dxf_linear_extrude(file = "parts.dxf", layer = "cam_side" ,height = 6, center = true, convexity = 10);
-	rotate(90,[1,0,0])
-	translate([0,96,-88])
-	dxf_linear_extrude(file = "parts.dxf", layer = "cam_side" ,height = 6, center = true, convexity = 10);
-
-}
 
 module laserholder(){
 	translate([115,115,3])	
