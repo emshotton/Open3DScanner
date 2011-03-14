@@ -1335,7 +1335,7 @@ AcDbLayerTableRecord
   2
 cam_front
  70
-5
+0
  62
 7
   6
@@ -1535,7 +1535,7 @@ AcDbLayerTableRecord
   2
 ps3_eyeplate
  70
-0
+5
  62
 7
   6
@@ -82605,6 +82605,102 @@ ByLayer
  40
 11.5
   0
+CIRCLE
+  5
+B94
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+cam_front
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+35.0
+ 20
+36.9999999999999645
+ 30
+0.0
+ 40
+2.0
+  0
+CIRCLE
+  5
+B95
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+cam_front
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+35.0
+ 20
+-36.9999999999999289
+ 30
+0.0
+ 40
+2.0
+  0
+CIRCLE
+  5
+B96
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+cam_front
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-35.0
+ 20
+-36.9999999999999503
+ 30
+0.0
+ 40
+2.0
+  0
+CIRCLE
+  5
+B97
+100
+AcDbEntity
+100
+AcDbCircle
+  8
+cam_front
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+-35.0
+ 20
+36.9999999999999645
+ 30
+0.0
+ 40
+2.0
+  0
 ENDSEC
   0
 SECTION
@@ -82643,7 +82739,7 @@ E
   3
 AcDbVariableDictionary
 350
-B94
+B98
   0
 DICTIONARY
   5
@@ -83107,7 +83203,7 @@ Layout2
   0
 DICTIONARY
   5
-B94
+B98
 100
 AcDbDictionary
 281
@@ -83115,15 +83211,15 @@ AcDbDictionary
   3
 DIMASSOC
 350
-B96
+B9A
   3
 HIDETEXT
 350
-B95
+B99
   0
 DICTIONARYVAR
   5
-B95
+B99
 100
 DictionaryVariables
 280
@@ -83133,7 +83229,7 @@ DictionaryVariables
   0
 DICTIONARYVAR
   5
-B96
+B9A
 100
 DictionaryVariables
 280
