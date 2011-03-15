@@ -159,7 +159,7 @@ module case(){
 bearing_holders();
 platform();
 laserholder();
-%bed();
-//%case();
+bed();
+%case();
 cam_mount();
 door();
