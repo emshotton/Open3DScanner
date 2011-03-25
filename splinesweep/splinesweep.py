@@ -7,6 +7,7 @@
 
 import sys
 from PyQt4 import QtGui
+from PyQt4 import QtCore
 
 def createlineimage(image):
     print "Creating line image"
@@ -30,27 +31,30 @@ class ScanImageDisplay(QtGui.QWidget):
         self.__initUI()
 
     def __initUI(self):
-        layout = QtGui.QVBoxLayout()
-        self._imagelabel = QtGui.QLabel()
-        self._lineimagelabel = QtGui.QLabel()
-        layout.addWidget(self._imagelabel)
-        layout.addWidget(self._lineimagelabel)
+        #init viewing area
+        layout = QtGui.QGridLayout()
+        self.__imagelabel = QtGui.QLabel()
+        self.__lineimagelabel = QtGui.QLabel()
+        layout.addWidget(self.__imagelabel)
+        layout.addWidget(self.__lineimagelabel)
         self.setLayout(layout)
+        #Init control area
         
     def setImage(self,image):
         print "Setting image"
         display_image = image.scaledToWidth(400)
-        self._imagelabel.setPixmap(QtGui.QPixmap.fromImage(display_image))
+        self.__imagelabel.setPixmap(QtGui.QPixmap.fromImage(display_image))
 
     def setLineImage(self,image):
         print "Setting image"
         display_image = image.scaledToWidth(400)
-        self._lineimagelabel.setPixmap(QtGui.QPixmap.fromImage(display_image))
+        self.__lineimagelabel.setPixmap(QtGui.QPixmap.fromImage(display_image))
 
 
 class GUI(QtGui.QWidget):
     def __init__(self):
         super(GUI, self).__init__()
+        self.rotations = 300 
         self.__initUI()
         
     def __initUI(self):
@@ -62,9 +66,30 @@ class GUI(QtGui.QWidget):
         createlineimage(img)
         self.scandisplay.setLineImage(img)
         layout.addWidget(self.scandisplay)
-        self.setLayout(layout)
+        self.__progressbar = QtGui.QProgressBar()
+        self.__progressbar.setRange(0,self.rotations)
+        layout.addWidget(self.__progressbar)
         self.setWindowTitle('Splinesweep v1.0 - \"Withnail\"')
-        self.resize(300, 300)
+        #Initializing control widget        
+        self.controlwidget = QtGui.QWidget()  
+        self.controllayout = QtGui.QGridLayout()
+        self.controlwidget.rotation_spinbox = QtGui.QSpinBox()
+        self.controlwidget.rotation_spinbox.setRange(0,10000)
+        self.controlwidget.rotation_spinbox.setValue(300)
+        self.controlwidget.rotation_label = QtGui.QLabel("Number of rotations")
+        self.controllayout.addWidget(self.controlwidget.rotation_label,0,0)
+        self.controllayout.addWidget(self.controlwidget.rotation_spinbox,0,1)
+        self.controlwidget.setLayout(self.controllayout)
+        layout.addWidget(self.controlwidget,0,1,2,1)
+        self.setLayout(layout)
+        #Connecting signals/slots
+        self.connect(self.controlwidget.rotation_spinbox,QtCore.SIGNAL("valueChanged(int)"),self.setRotations)
+        
+
+    def setRotations(self,rotations):
+        print "setting rotation: "+str(rotations)
+        self.rotations = rotations
+        self.__progressbar.setRange(0,self.rotations)
 
 
 app = QtGui.QApplication(sys.argv)
