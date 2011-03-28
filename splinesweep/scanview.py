@@ -21,7 +21,31 @@ class ImageView(QtGui.QWidget):
         self.image = QtGui.QImage()
         self.__mousestate = ImageViewState.NONE
     
+    def __toClassAttributes(self,attributes):
+        #top bottom center
+        #crappy hack but i'm drunk
+        #WHY? Because fuck its why.
+        newattr=[0,self.height(),self.width()/2]
+        if self.__imageheight > 0 and self.__imagewidth>0:
+            newattr[0]= attributes[0]*(float(self.__imageheight)/float(self.image.height()))
+            newattr[1]= attributes[1]*(float(self.__imageheight)/float(self.image.height()))
+            newattr[2]= attributes[2]*(float(self.__imagewidth)/float(self.image.width()))
+        return newattr
+    
+    def __fromClassAttributes(self,attributes):
+        newattr=[0,self.height(),self.width()/2]
+        print self.image.height()
+        print self.__imageheight
+        if self.__imageheight > 0 and self.__imagewidth>0:
+            newattr[0]= float(attributes[0])*float(float(self.image.height())/float(self.__imageheight))
+            newattr[1]= float(attributes[1])*float(float(self.image.height())/float(self.__imageheight))
+            newattr[2]= float(attributes[2])*float(float(self.image.width())/float(self.__imagewidth))
+        return newattr
+        
+
     def setImage(self,image):
+        self.__imageheight = image.height()
+        self.__imagewidth = image.width()
         image = image.scaledToWidth(400)
         self.image = image
         self.repaint()
@@ -30,8 +54,11 @@ class ImageView(QtGui.QWidget):
         print "Painting"
         painter = QtGui.QPainter(self)
         painter.drawImage(0,0,self.image)
+        painter.setPen(QtGui.QPen(QtGui.QColor(255,0,0)))
         painter.drawLine(0,self.__scantop,self.width(),self.__scantop)
+        painter.setPen(QtGui.QPen(QtGui.QColor(0,255,0)))
         painter.drawLine(0,self.__scanbottom,self.width(),self.__scanbottom)
+        painter.setPen(QtGui.QPen(QtGui.QColor(0,0,255)))
         painter.drawLine(self.__scancenter,0,self.__scancenter,self.width())
         painter.end()        
 
@@ -106,11 +133,13 @@ class ScanImageDisplay(QtGui.QWidget):
         layout.addWidget(self.__lineimagelabel)
         self.setLayout(layout)
         self.connect(self.__imagelabel,QtCore.SIGNAL("scanParametersChanged"),self.__lineimagelabel.setScanParameters)
+        self.connect(self.__lineimagelabel,QtCore.SIGNAL("scanParametersChanged"),self.__imagelabel.setScanParameters)
         #Init control area
         
     def setImage(self,image):
         print "Setting image"
         self.__imagelabel.setImage(image)
+        
 
     def setLineImage(self,image):
         print "Setting image"

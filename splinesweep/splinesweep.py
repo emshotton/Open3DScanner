@@ -9,6 +9,7 @@ import sys
 from PyQt4 import QtGui
 from PyQt4 import QtCore
 import scanview
+import splinecapture
 
 def createlineimage(image):
     print "Creating line image"
@@ -28,18 +29,19 @@ def createlineimage(image):
 
 
 
-
 class GUI(QtGui.QWidget):
     def __init__(self):
         super(GUI, self).__init__()
         self.rotations = 300 
+        self.camerecapture = splinecapture.CameraCapture()        
         self.__initUI()
+        
         
     def __initUI(self):
         layout = QtGui.QGridLayout()
         self.scandisplay = scanview.ScanImageDisplay()
-        img = QtGui.QImage()
-        img.load("1.png")
+        img = QtGui.QImage(600,480,QtGui.QImage.Format_RGB32)
+        #img.load("1.png")
         self.scandisplay.setImage(img)
         createlineimage(img)
         self.scandisplay.setLineImage(img)
