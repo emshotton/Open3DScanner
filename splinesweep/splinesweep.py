@@ -74,7 +74,9 @@ class GUI(QtGui.QWidget):
         self.__progressbar.setRange(0,self.rotations)
 
     def updateScanDisplay(self):
-        self.scandisplay.setImage(self.cameracapture.getImage())        
+        image= self.cameracapture.getImage()
+        self.scandisplay.setImage(image)
+        self.scandisplay.setLineImage(splinecapture.createLineImage(image))     
 
 
 app = QtGui.QApplication(sys.argv)

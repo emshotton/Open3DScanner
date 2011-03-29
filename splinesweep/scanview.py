@@ -160,7 +160,24 @@ class ScanImageDisplay(QtGui.QWidget):
 
     def setLineImage(self,image):
         print "Setting image"
-        self.__lineimagelabel.setImage(image)
+
+        alpha = cv.CreateMat(image.height,image.width, cv.CV_8UC1)
+        cv.Rectangle(alpha,(0,0),(image.width,image.height),cv.ScalarAll(255),-1)
+        rgba = cv.CreateMat(image.height,image.width, cv.CV_8UC4)     
+        
+        cv.Set(rgba, (1,2,3,4))
+        cv.MixChannels([image, alpha],[rgba], [
+        (0, 0),    # rgba[0] -> bgr[2]
+        (1, 1),    # rgba[1] -> bgr[1]
+        (2, 2),    # rgba[2] -> bgr[0]
+        (3, 3)     # rgba[3] -> alpha[0]
+        ])
+
+        self.__ipllineimagedata = rgba.tostring()
+        qimage = QtGui.QImage(self.__ipllineimagedata, image.width,image.height, QtGui.QImage.Format_RGB32)
+        print qimage.numBytes()
+        qimage = qimage.scaledToWidth(400)
+        self.__lineimagelabel.setImage(qimage)
 
 #    def setScanTop(top):
 #        """"TODO""""
