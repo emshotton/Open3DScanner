@@ -33,18 +33,21 @@ class GUI(QtGui.QWidget):
     def __init__(self):
         super(GUI, self).__init__()
         self.rotations = 300 
-        self.camerecapture = splinecapture.CameraCapture()        
+        self.cameracapture = splinecapture.CameraCapture()        
         self.__initUI()
-        
+        self.__cameratimer =QtCore.QTimer()
+        self.__cameratimer.setInterval(100)
+        self.__cameratimer.start()
+        self.connect(self.__cameratimer,QtCore.SIGNAL("timeout()"),self.updateScanDisplay)        
         
     def __initUI(self):
         layout = QtGui.QGridLayout()
         self.scandisplay = scanview.ScanImageDisplay()
-        img = QtGui.QImage(600,480,QtGui.QImage.Format_RGB32)
+        #img = QtGui.QImage(600,480,QtGui.QImage.Format_RGB32)
         #img.load("1.png")
-        self.scandisplay.setImage(img)
-        createlineimage(img)
-        self.scandisplay.setLineImage(img)
+        #self.scandisplay.setImage(img)
+        #createlineimage(img)
+        #self.scandisplay.setLineImage(img)
         layout.addWidget(self.scandisplay)
         self.__progressbar = QtGui.QProgressBar()
         self.__progressbar.setRange(0,self.rotations)
@@ -69,6 +72,9 @@ class GUI(QtGui.QWidget):
         print "setting rotation: "+str(rotations)
         self.rotations = rotations
         self.__progressbar.setRange(0,self.rotations)
+
+    def updateScanDisplay(self):
+        self.scandisplay.setImage(self.cameracapture.getImage())        
 
 
 app = QtGui.QApplication(sys.argv)
