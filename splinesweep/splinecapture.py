@@ -1,7 +1,8 @@
 #!/usr/bin/python
-
-import cv
-
+try:
+    import cv
+except ImportError:
+    pass
 
 class CameraCapture():
     
@@ -13,7 +14,8 @@ class CameraCapture():
             self.working = False
     
     def getImage(self):
-        img = cv.QueryFrame(self.__capture)
+        if self.working ==True:
+            img = cv.QueryFrame(self.__capture)
         return img
 
 class Spline():
