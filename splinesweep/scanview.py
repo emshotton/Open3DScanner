@@ -14,13 +14,15 @@ except ImportError:
 class IplQImage(QtGui.QImage):
     """A class for converting iplimages to qimages"""
     
-    def __init__(iplimage):
+    def __init__(self,iplimage):
+        print "Width: " + str(iplimage.width)+" Height: "+str(iplimage.height)
+        
         #Rough-n-ready but it works dammit
         alpha = cv.CreateMat(iplimage.height,iplimage.width, cv.CV_8UC1)
         cv.Rectangle(alpha,(0,0),(iplimage.width,iplimage.height),cv.ScalarAll(255),-1)
         rgba = cv.CreateMat(iplimage.height,iplimage.width, cv.CV_8UC4)
         cv.Set(rgba, (1,2,3,4))
-        cv.MixChannels([image, alpha],[rgba], [
+        cv.MixChannels([iplimage, alpha],[rgba], [
         (0, 0),    # rgba[0] -> bgr[2]
         (1, 1),    # rgba[1] -> bgr[1]
         (2, 2),    # rgba[2] -> bgr[0]
@@ -165,11 +167,14 @@ class ScanImageDisplay(QtGui.QWidget):
         #Init control area
         
     def setImage(self,image):
+        print "Setting image"
         if type(image) == type(QtGui.QImage()):
             self.__imagelabel.setImage(image)
 
-        elif type(image) == type(cv.CvMat()):
+        elif type(image) == cv.iplimage:#type(cv.CreateImage((1,1), cv.IPL_DEPTH_8U, 1)):
+            print "Creating ipl image"
             self.__imagelabel.setImage(IplQImage(image))
+        print "Done setting image"
 
 #        alpha = cv.CreateMat(image.height,image.width, cv.CV_8UC1)
 #        cv.Rectangle(alpha,(0,0),(image.width,image.height),cv.ScalarAll(255),-1)
@@ -191,11 +196,13 @@ class ScanImageDisplay(QtGui.QWidget):
         
 
     def setLineImage(self,image):
+        print "Setting line image"
         if type(image) == type(QtGui.QImage()):
             self.__lineimagelabel.setImage(image)
 
-        elif type(image) == type(cv.CvMat()):
-            self.__lineimagelabel.setImage(IplQImage(image))
+        elif type(image) == cv.iplimage: #type(cv.CreateImage((1,1), cv.IPL_DEPTH_8U, 1)):
+            self.__lineimagelabel.setImage(IplQImage(image()))
+        print "Done setting line image"
 
 #        print "Setting image"
 #

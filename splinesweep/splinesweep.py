@@ -77,7 +77,8 @@ class GUI(QtGui.QWidget):
     def updateScanDisplay(self):
         if splinecapture.opencvworking == True:
             image= self.cameracapture.getImage()
-            self.scandisplay.setLineImage(splinecapture.createLineImage(image))     
+            print type(image)
+            #self.scandisplay.setLineImage(splinecapture.createLineImage(image))     
         else:
             image = QtGui.QImage(640,480,QtGui.QImage.Format_RGB32)
             image.load("1.png")
