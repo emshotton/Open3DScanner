@@ -1,9 +1,35 @@
 import sys
-import cv
 from PyQt4 import QtGui
 from PyQt4 import QtCore
-import cv
-import copy
+
+try:
+    opencvworking = True
+    import cv    
+except ImportError:
+    print "Unable to import OpenCV, webcam input won't work"
+    opencvworking = False
+    
+
+#############################################################
+class IplQImage(QtGui.QImage):
+    """A class for converting iplimages to qimages"""
+    
+    def __init__(iplimage):
+        #Rough-n-ready but it works dammit
+        alpha = cv.CreateMat(iplimage.height,iplimage.width, cv.CV_8UC1)
+        cv.Rectangle(alpha,(0,0),(iplimage.width,iplimage.height),cv.ScalarAll(255),-1)
+        rgba = cv.CreateMat(iplimage.height,iplimage.width, cv.CV_8UC4)
+        cv.Set(rgba, (1,2,3,4))
+        cv.MixChannels([image, alpha],[rgba], [
+        (0, 0),    # rgba[0] -> bgr[2]
+        (1, 1),    # rgba[1] -> bgr[1]
+        (2, 2),    # rgba[2] -> bgr[0]
+        (3, 3)     # rgba[3] -> alpha[0]
+        ])
+        self.__imagedata = rgba.tostring()
+        super(IplQImage,self).__init__(self.__imagedata, iplimage.width,iplimage.height, QtGui.QImage.Format_RGB32)
+                
+
 #############################################################
 
 class ImageViewState:
@@ -139,45 +165,57 @@ class ScanImageDisplay(QtGui.QWidget):
         #Init control area
         
     def setImage(self,image):
-        alpha = cv.CreateMat(image.height,image.width, cv.CV_8UC1)
-        cv.Rectangle(alpha,(0,0),(image.width,image.height),cv.ScalarAll(255),-1)
-        rgba = cv.CreateMat(image.height,image.width, cv.CV_8UC4)     
-        
-        cv.Set(rgba, (1,2,3,4))
-        cv.MixChannels([image, alpha],[rgba], [
-        (0, 0),    # rgba[0] -> bgr[2]
-        (1, 1),    # rgba[1] -> bgr[1]
-        (2, 2),    # rgba[2] -> bgr[0]
-        (3, 3)     # rgba[3] -> alpha[0]
-        ])
+        if type(image) == type(QtGui.QImage()):
+            self.__imagelabel.setImage(image)
 
-        self.__iplimagedata = rgba.tostring()
-        qimage = QtGui.QImage(self.__iplimagedata, image.width,image.height, QtGui.QImage.Format_RGB32)
-        print qimage.numBytes()
-        qimage = qimage.scaledToWidth(400)
-        self.__imagelabel.setImage(qimage)
+        elif type(image) == type(cv.CvMat()):
+            self.__imagelabel.setImage(IplQImage(image))
+
+#        alpha = cv.CreateMat(image.height,image.width, cv.CV_8UC1)
+#        cv.Rectangle(alpha,(0,0),(image.width,image.height),cv.ScalarAll(255),-1)
+#        rgba = cv.CreateMat(image.height,image.width, cv.CV_8UC4)     
+#        
+#        cv.Set(rgba, (1,2,3,4))
+#        cv.MixChannels([image, alpha],[rgba], [
+#        (0, 0),    # rgba[0] -> bgr[2]
+#        (1, 1),    # rgba[1] -> bgr[1]
+#        (2, 2),    # rgba[2] -> bgr[0]
+#        (3, 3)     # rgba[3] -> alpha[0]
+#        ])
+#
+#        self.__iplimagedata = rgba.tostring()
+#        qimage = QtGui.QImage(self.__iplimagedata, image.width,image.height, QtGui.QImage.Format_RGB32)
+#        print qimage.numBytes()
+#        qimage = qimage.scaledToWidth(400)
+#        self.__imagelabel.setImage(qimage)
         
 
     def setLineImage(self,image):
-        print "Setting image"
+        if type(image) == type(QtGui.QImage()):
+            self.__lineimagelabel.setImage(image)
 
-        alpha = cv.CreateMat(image.height,image.width, cv.CV_8UC1)
-        cv.Rectangle(alpha,(0,0),(image.width,image.height),cv.ScalarAll(255),-1)
-        rgba = cv.CreateMat(image.height,image.width, cv.CV_8UC4)     
+        elif type(image) == type(cv.CvMat()):
+            self.__lineimagelabel.setImage(IplQImage(image))
+
+#        print "Setting image"
+#
+#        alpha = cv.CreateMat(image.height,image.width, cv.CV_8UC1)
+#        cv.Rectangle(alpha,(0,0),(image.width,image.height),cv.ScalarAll(255),-1)
+#        rgba = cv.CreateMat(image.height,image.width, cv.CV_8UC4)     
         
-        cv.Set(rgba, (1,2,3,4))
-        cv.MixChannels([image, alpha],[rgba], [
-        (0, 0),    # rgba[0] -> bgr[2]
-        (1, 1),    # rgba[1] -> bgr[1]
-        (2, 2),    # rgba[2] -> bgr[0]
-        (3, 3)     # rgba[3] -> alpha[0]
-        ])
-
-        self.__ipllineimagedata = rgba.tostring()
-        qimage = QtGui.QImage(self.__ipllineimagedata, image.width,image.height, QtGui.QImage.Format_RGB32)
-        print qimage.numBytes()
-        qimage = qimage.scaledToWidth(400)
-        self.__lineimagelabel.setImage(qimage)
+##        cv.Set(rgba, (1,2,3,4))
+#        cv.MixChannels([image, alpha],[rgba], [
+#        (0, 0),    # rgba[0] -> bgr[2]
+#        (1, 1),    # rgba[1] -> bgr[1]
+#        (2, 2),    # rgba[2] -> bgr[0]
+#        (3, 3)     # rgba[3] -> alpha[0]
+#        ])
+#
+#        self.__ipllineimagedata = rgba.tostring()
+#        qimage = QtGui.QImage(self.__ipllineimagedata, image.width,image.height, QtGui.QImage.Format_RGB32)
+#        print qimage.numBytes()
+#        qimage = qimage.scaledToWidth(400)
+#        self.__lineimagelabel.setImage(qimage)
 
 #    def setScanTop(top):
 #        """"TODO""""
@@ -190,4 +228,13 @@ class ScanImageDisplay(QtGui.QWidget):
 #############################################################
 
 
+if __name__ == "__main__":    
 
+    app =QtGui.QApplication(sys.argv)
+    ex = ScanImageDisplay()
+    if opencvworking == False:
+        ex.setImage(QtGui.QImage(200,200,QtGui.QImage.Format_RGB32))
+    else:
+        capture = cv.captureFromCam(0)
+    ex.show()
+    sys.exit(app.exec_())

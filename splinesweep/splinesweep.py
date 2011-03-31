@@ -33,7 +33,8 @@ class GUI(QtGui.QWidget):
     def __init__(self):
         super(GUI, self).__init__()
         self.rotations = 300 
-        self.cameracapture = splinecapture.CameraCapture()        
+        if splinecapture.opencvworking == True:
+            self.cameracapture = splinecapture.CameraCapture()        
         self.__initUI()
         self.__cameratimer =QtCore.QTimer()
         self.__cameratimer.setInterval(100)
@@ -74,9 +75,12 @@ class GUI(QtGui.QWidget):
         self.__progressbar.setRange(0,self.rotations)
 
     def updateScanDisplay(self):
-        image= self.cameracapture.getImage()
+        if splinecapture.opencvworking == True:
+            image= self.cameracapture.getImage()
+            self.scandisplay.setLineImage(splinecapture.createLineImage(image))     
+        else:
+            image = QtGui.QImage(640,480,QtGui.QImage.Format_RGB32)
         self.scandisplay.setImage(image)
-        self.scandisplay.setLineImage(splinecapture.createLineImage(image))     
 
 
 app = QtGui.QApplication(sys.argv)

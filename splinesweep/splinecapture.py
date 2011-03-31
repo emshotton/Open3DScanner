@@ -1,8 +1,13 @@
 #!/usr/bin/python
+
+opencvworking = True
 try:
     import cv
 except ImportError:
+    opencvworking = False
     pass
+
+##################################################################################
 
 class CameraCapture():
     
@@ -18,10 +23,14 @@ class CameraCapture():
             img = cv.QueryFrame(self.__capture)
         return img
 
+##################################################################################
+
 class Spline():
     def __init__(self):
         self.spline = []
         self.colorspline = []
+
+##################################################################################
 
 def createSpline(image,channel=0,camera_angle = 45,top_crop =0,bottom_crop =0,rotation_center=0,upper_threshold=255,lower_threshold=0):
     spline=[0]*image.height
