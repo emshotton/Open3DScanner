@@ -80,6 +80,7 @@ class GUI(QtGui.QWidget):
             self.scandisplay.setLineImage(splinecapture.createLineImage(image))     
         else:
             image = QtGui.QImage(640,480,QtGui.QImage.Format_RGB32)
+            image.load("1.png")
         self.scandisplay.setImage(image)
 
 
