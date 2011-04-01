@@ -27,12 +27,11 @@ def createlineimage(image):
         image.setPixel(max_position,y,pixel)
 
 
-
-
 class GUI(QtGui.QWidget):
     def __init__(self):
         super(GUI, self).__init__()
         self.rotations = 300 
+        self.colorchannel = 0
         if splinecapture.opencvworking == True:
             self.cameracapture = splinecapture.CameraCapture()        
         self.__initUI()
@@ -62,20 +61,45 @@ class GUI(QtGui.QWidget):
         self.controlwidget.rotation_spinbox.setValue(300)
         self.controlwidget.rotation_label = QtGui.QLabel("Number of rotations")
         self.controlwidget.splinegen_button = QtGui.QPushButton("Generate a spline")
+
+        self.controlwidget.channel_combobox = QtGui.QComboBox()
+        self.controlwidget.channel_combobox.addItem("Red")
+        self.controlwidget.channel_combobox.addItem("Green")
+        self.controlwidget.channel_combobox.addItem("Blue")
+        
         self.controllayout.addWidget(self.controlwidget.rotation_label,0,0)
         self.controllayout.addWidget(self.controlwidget.rotation_spinbox,0,1)
-        self.controllayout.addWidget(self.controlwidget.splinegen_button,1,0,1,2)
+        self.controllayout.addWidget(QtGui.QLabel("Color channel"),1,0)
+        self.controllayout.addWidget(self.controlwidget.channel_combobox,1,1)
+        self.controllayout.addWidget(self.controlwidget.splinegen_button,2,0,1,2)
+    
         self.controlwidget.setLayout(self.controllayout)
         layout.addWidget(self.controlwidget,0,1,2,1)
         self.setLayout(layout)
         #Connecting signals/slots
         self.connect(self.controlwidget.rotation_spinbox,QtCore.SIGNAL("valueChanged(int)"),self.setRotations)
         self.connect(self.controlwidget.splinegen_button,QtCore.SIGNAL("pressed()"),self.updateSplineDisplay)
-        
+        self.connect(self.controlwidget.channel_combobox,QtCore.SIGNAL("activated(QString)"),self.setColorChannel)
+                
     def setRotations(self,rotations):
         print "setting rotation: "+str(rotations)
         self.rotations = rotations
         self.__progressbar.setRange(0,self.rotations)
+
+    def setColorChannel(self, channel):
+        if channel == "Red":
+            self.colorchannel = 0
+            print "Setting channel to Red"
+
+        elif channel == "Green":
+            self.colorchannel = 1
+            print "Setting channel to Green"
+
+        elif channel == "Blue":
+            self.colorchannel = 2
+            print "Setting channel to Blue"
+
+        else: print "OH GoD ThIS ShoUld NeVeR HappEN!!! Owls are probably nesting inside your computer"    
 
     def updateScanDisplay(self):
         if splinecapture.opencvworking == True:
@@ -86,8 +110,26 @@ class GUI(QtGui.QWidget):
         self.scandisplay.setImage(self.image)
 
     def updateSplineDisplay(self):
-        self.scandisplay.setLineImage(splinecapture.createLineImage(self.image))     
+        self.scandisplay.setLineImage(createLineImage(self.image,self.colorchannel))     
         
+
+def createLineImage(image,channel =0):
+    for y in range(image.height()-1):
+        max_value=0
+        max_position =0
+        for x in range(image.width()-1):
+            pixel = (QtGui.qRed(image.pixel(x,y)),QtGui.qGreen(image.pixel(x,y)),QtGui.qBlue(image.pixel(x,y)))
+            if pixel[channel] > max_value:
+               max_position = x
+               max_value = pixel[channel]
+            image.setPixel(x,y,QtGui.qRgb(0,0,0))
+        if channel == 0:
+            image.setPixel(max_position,y,QtGui.qRgb(max_value,0,0))
+        if channel == 1:
+            image.setPixel(max_position,y,QtGui.qRgb(0,max_value,0))
+        if channel == 2:
+            image.setPixel(max_position,y,QtGui.qRgb(0,0,max_value))
+    return image
 
 app = QtGui.QApplication(sys.argv)
 ex = GUI()

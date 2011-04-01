@@ -81,7 +81,7 @@ class ImageView(QtGui.QWidget):
         self.repaint()
 
     def paintEvent(self,ev):
-        print "Painting"
+#        print "Painting"
         painter = QtGui.QPainter(self)
         painter.drawImage(0,0,self.image)
         painter.setPen(QtGui.QPen(QtGui.QColor(255,0,0)))
@@ -167,14 +167,14 @@ class ScanImageDisplay(QtGui.QWidget):
         #Init control area
         
     def setImage(self,image):
-        print "Setting image"
+#        print "Setting image"
         if type(image) == type(QtGui.QImage()):
             self.__imagelabel.setImage(image)
 
         elif type(image) == cv.iplimage:#type(cv.CreateImage((1,1), cv.IPL_DEPTH_8U, 1)):
             print "Creating ipl image"
             self.__imagelabel.setImage(IplQImage(image))
-        print "Done setting image"
+#        print "Done setting image"
 
 #        alpha = cv.CreateMat(image.height,image.width, cv.CV_8UC1)
 #        cv.Rectangle(alpha,(0,0),(image.width,image.height),cv.ScalarAll(255),-1)
@@ -196,13 +196,13 @@ class ScanImageDisplay(QtGui.QWidget):
         
 
     def setLineImage(self,image):
-        print "Setting line image"
+#        print "Setting line image"
         if type(image) == type(QtGui.QImage()):
             self.__lineimagelabel.setImage(image)
 
         elif type(image) == cv.iplimage: #type(cv.CreateImage((1,1), cv.IPL_DEPTH_8U, 1)):
             self.__lineimagelabel.setImage(IplQImage(image()))
-        print "Done setting line image"
+#        print "Done setting line image"
 
 #        print "Setting image"
 #
