@@ -32,6 +32,7 @@ class GUI(QtGui.QWidget):
         super(GUI, self).__init__()
         self.rotations = 300 
         self.colorchannel = 0
+        self.output_filename = "scan.obj"
         if splinecapture.opencvworking == True:
             self.cameracapture = splinecapture.CameraCapture()        
         self.__initUI()
@@ -61,18 +62,27 @@ class GUI(QtGui.QWidget):
         self.controlwidget.rotation_spinbox.setValue(300)
         self.controlwidget.rotation_label = QtGui.QLabel("Number of rotations")
         self.controlwidget.splinegen_button = QtGui.QPushButton("Generate a spline")
-
+        
         self.controlwidget.channel_combobox = QtGui.QComboBox()
         self.controlwidget.channel_combobox.addItem("Red")
         self.controlwidget.channel_combobox.addItem("Green")
         self.controlwidget.channel_combobox.addItem("Blue")
         
+        self.controlwidget.save_filedialog = QtGui.QFileDialog()
+        self.controlwidget.save_filedialog.setFileMode(QtGui.QFileDialog.AnyFile)
+        self.controlwidget.save_filedialog.setAcceptMode(QtGui.QFileDialog.AcceptSave)
+        self.controlwidget.save_filedialog.setFilter("Wavefront Obj File (*.obj)")
+        self.controlwidget.save_filedialog.setDefaultSuffix("obj")
+        self.controlwidget.save_filedialog.setVisible(False)
+        
+        self.controlwidget.scan_button = QtGui.QPushButton("Start Scan")
+
         self.controllayout.addWidget(self.controlwidget.rotation_label,0,0)
         self.controllayout.addWidget(self.controlwidget.rotation_spinbox,0,1)
         self.controllayout.addWidget(QtGui.QLabel("Color channel"),1,0)
         self.controllayout.addWidget(self.controlwidget.channel_combobox,1,1)
         self.controllayout.addWidget(self.controlwidget.splinegen_button,2,0,1,2)
-    
+        self.controllayout.addWidget(self.controlwidget.scan_button,3,0,1,2)    
         self.controlwidget.setLayout(self.controllayout)
         layout.addWidget(self.controlwidget,0,1,2,1)
         self.setLayout(layout)
@@ -80,7 +90,16 @@ class GUI(QtGui.QWidget):
         self.connect(self.controlwidget.rotation_spinbox,QtCore.SIGNAL("valueChanged(int)"),self.setRotations)
         self.connect(self.controlwidget.splinegen_button,QtCore.SIGNAL("pressed()"),self.updateSplineDisplay)
         self.connect(self.controlwidget.channel_combobox,QtCore.SIGNAL("activated(QString)"),self.setColorChannel)
-                
+        self.connect(self.controlwidget.scan_button,QtCore.SIGNAL("pressed()"),self.showSaveDialog)
+        self.connect(self.controlwidget.save_filedialog,QtCore.SIGNAL("filesSelected(QStringList)"), self.performScan)
+        
+    def showSaveDialog(self):
+        self.controlwidget.save_filedialog.setVisible(True)
+
+    def performScan(self,filename):
+        self.output_filename = filename.first()
+        print "Saving file to: "+self.output_filename
+
     def setRotations(self,rotations):
         print "setting rotation: "+str(rotations)
         self.rotations = rotations
@@ -99,7 +118,7 @@ class GUI(QtGui.QWidget):
             self.colorchannel = 2
             print "Setting channel to Blue"
 
-        else: print "OH GoD ThIS ShoUld NeVeR HappEN!!! Owls are probably nesting inside your computer"    
+        else: print "OH GoD ThIS ShoUld NeVeR HappEN!!! Owls are probably nesting inside your computer n fiddlin with your wires"    
 
     def updateScanDisplay(self):
         if splinecapture.opencvworking == True:
@@ -110,9 +129,8 @@ class GUI(QtGui.QWidget):
         self.scandisplay.setImage(self.image)
 
     def updateSplineDisplay(self):
-        self.scandisplay.setLineImage(createLineImage(self.image,self.colorchannel))     
+        self.scandisplay.setLineImage(createLineImage(self.image,self.colorchannel))
         
-
 def createLineImage(image,channel =0):
     for y in range(image.height()-1):
         max_value=0
