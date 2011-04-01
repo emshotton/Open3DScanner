@@ -61,13 +61,16 @@ class GUI(QtGui.QWidget):
         self.controlwidget.rotation_spinbox.setRange(0,10000)
         self.controlwidget.rotation_spinbox.setValue(300)
         self.controlwidget.rotation_label = QtGui.QLabel("Number of rotations")
+        self.controlwidget.splinegen_button = QtGui.QPushButton("Generate a spline")
         self.controllayout.addWidget(self.controlwidget.rotation_label,0,0)
         self.controllayout.addWidget(self.controlwidget.rotation_spinbox,0,1)
+        self.controllayout.addWidget(self.controlwidget.splinegen_button,1,0,1,2)
         self.controlwidget.setLayout(self.controllayout)
         layout.addWidget(self.controlwidget,0,1,2,1)
         self.setLayout(layout)
         #Connecting signals/slots
         self.connect(self.controlwidget.rotation_spinbox,QtCore.SIGNAL("valueChanged(int)"),self.setRotations)
+        self.connect(self.controlwidget.splinegen_button,QtCore.SIGNAL("pressed()"),self.updateSplineDisplay)
         
     def setRotations(self,rotations):
         print "setting rotation: "+str(rotations)
@@ -76,14 +79,15 @@ class GUI(QtGui.QWidget):
 
     def updateScanDisplay(self):
         if splinecapture.opencvworking == True:
-            image= self.cameracapture.getImage()
-            print type(image)
-            #self.scandisplay.setLineImage(splinecapture.createLineImage(image))     
+            self.image= self.cameracapture.getImage()
         else:
-            image = QtGui.QImage(640,480,QtGui.QImage.Format_RGB32)
-            image.load("1.png")
-        self.scandisplay.setImage(image)
+            self.image = QtGui.QImage(640,480,QtGui.QImage.Format_RGB32)
+            self.image.load("1.png")
+        self.scandisplay.setImage(self.image)
 
+    def updateSplineDisplay(self):
+        self.scandisplay.setLineImage(splinecapture.createLineImage(self.image))     
+        
 
 app = QtGui.QApplication(sys.argv)
 ex = GUI()
