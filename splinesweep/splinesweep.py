@@ -8,6 +8,9 @@
 import sys
 from PyQt4 import QtGui
 from PyQt4 import QtCore
+sys.path.append("/usr/lib/pymodules/python2.6/opencv/")
+import cv
+
 import scanview
 import splinecapture
 
